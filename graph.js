@@ -1,4 +1,4 @@
-/*global window: false, console: false */
+/*global window: false */
 (function () {
     'use strict';
 
@@ -80,8 +80,6 @@
             }
 
             if (that.functions.hasOwnProperty(key)) {
-                console.log('computing function ' + key);
-
                 fn = that.functions[key];
                 for (i = 0, args = []; i < that.dependencies[key].length; i += 1) {
                     args.push(compileFunction(that.dependencies[key][i]));
@@ -105,6 +103,8 @@
     Graph.prototype.compute = function () {
         this.results = {};
     };
+
+    window.Graph = Graph;
 
     function LazyGraph() {
         LazyGraph.superclass.constructor.apply(this, arguments);
