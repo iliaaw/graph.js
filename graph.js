@@ -63,7 +63,7 @@
     };
 
     Graph.prototype.compile = function () {
-        var that, key, compileFunction, result;
+        var that, key, compileFunction, result, defineAccessor;
 
         that = this;
         this.compiledFunctions = {};
@@ -93,15 +93,31 @@
             throw new Error('Missing argument ' + key);
         };
 
+        defineAccessor = function (fn) {
+            Object.defineProperty(that, fn, {
+                'get': function () {
+                    that.results = {};
+
+                    return compileFunction.bind(null, fn)();
+                }
+            });
+        };
+
         for (key in this.functions) {
             if (this.functions.hasOwnProperty(key)) {
                 this.compiledFunctions[key] = compileFunction.bind(null, key);
+
+                defineAccessor(key);
             }
         }
     };
 
     Graph.prototype.compute = function () {
         this.results = {};
+    };
+
+    Graph.prototype.setData = function (data) {
+        this.data = data;
     };
 
     window.Graph = Graph;
