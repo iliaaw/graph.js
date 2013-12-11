@@ -1,5 +1,4 @@
-/*global window: false, console: false, LazyGraph: false, EagerGraph: false */
-
+/*global console: false, LazyGraph: false, EagerGraph: false */
 (function () {
     'use strict';
 

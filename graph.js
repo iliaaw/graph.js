@@ -1,5 +1,4 @@
 /*global window: false, console: false */
-
 (function () {
     'use strict';
 
@@ -67,7 +66,6 @@
         var that, key, compileFunction, result;
 
         that = this;
-        this.results = {};
         this.compiledFunctions = {};
 
         compileFunction = function (key) {
@@ -93,6 +91,8 @@
 
                 return result;
             }
+
+            throw new Error('Missing argument ' + key);
         };
 
         for (key in this.functions) {
@@ -102,8 +102,8 @@
         }
     };
 
-    Graph.prototype.compute = function (key, data) {
-        // TODO check for key presence and missing dependencies
+    Graph.prototype.compute = function () {
+        this.results = {};
     };
 
     function LazyGraph() {
