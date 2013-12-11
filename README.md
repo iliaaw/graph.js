@@ -1,2 +1,1 @@
-graph.js
-========
+See [blog.getprismatic.com/blog/2012/10/1/prismatics-graph-at-strange-loop.html](http://blog.getprismatic.com/blog/2012/10/1/prismatics-graph-at-strange-loop.html) for details.
